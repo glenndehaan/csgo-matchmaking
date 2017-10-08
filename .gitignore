@@ -8,3 +8,8 @@
 # Dependency managers
 node_modules/
 npm-debug.log
+
+# Server
+config.js
+csgo-matchmaking.json
+csgo-matchmaking.log
