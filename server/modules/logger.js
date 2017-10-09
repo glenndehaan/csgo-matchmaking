@@ -2,7 +2,7 @@
  * Import base packages
  */
 const log = require('simple-node-logger').createSimpleLogger('./csgo-matchmaking.log');
-const config = require("../config");
+const config = require("../config/config");
 
 /**
  * Set log level from config

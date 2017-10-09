@@ -4,9 +4,11 @@
   "description": "NPM packages for csgo-matchmaking",
   "private": true,
   "scripts": {
-    "server": "node server.js",
+    "prestart": "npm install",
+    "start": "node server.js",
+    "predev": "npm install && mocha -R spec --recursive",
     "dev": "nodemon -L --watch ./ ./server.js",
-    "test": "mocha -R spec --recursive"
+    "test": "mocha -R spec --recursive --watch"
   },
   "author": "Glenn de Haan",
   "license": "MIT",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "nodemon": "^1.12.1",
     "mocha": "^4.0.1",
-    "should": "^13.1.1"
+    "should": "^13.1.1",
+    "socket.io-client": "^2.0.3"
   }
 }
