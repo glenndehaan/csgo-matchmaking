@@ -10,6 +10,7 @@ node_modules/
 npm-debug.log
 
 # Server
+server/build
 config.js
 csgo-matchmaking.json
 csgo-matchmaking.log

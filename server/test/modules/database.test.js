@@ -5,7 +5,7 @@ const database = require('../../modules/database').db;
 describe("Database", function () {
     it('Should exists on filesystem', function (done) {
         const file = fs.existsSync(__dirname + "/../../csgo-matchmaking.json");
-        file.should.be.type('boolean');
+        file.should.be.Boolean();
         file.should.equal(true);
 
         if (file) {
@@ -17,7 +17,7 @@ describe("Database", function () {
         database.push("/test/write", true);
 
         const check = database.getData("/test/write");
-        check.should.be.type('boolean');
+        check.should.be.Boolean();
         check.should.equal(true);
 
         done();

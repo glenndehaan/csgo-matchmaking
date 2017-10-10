@@ -8,7 +8,8 @@
     "start": "node server.js",
     "predev": "npm install && mocha -R spec --recursive",
     "dev": "nodemon -L --watch ./ ./server.js",
-    "test": "mocha -R spec --recursive --watch"
+    "test": "mocha -R spec --recursive --watch",
+    "build": "pkg ./server.js --targets latest-linux-x64,latest-macos-x64,latest-win-x64 --out-path ./build"
   },
   "author": "Glenn de Haan",
   "license": "MIT",
@@ -21,6 +22,7 @@
     "nodemon": "^1.12.1",
     "mocha": "^4.0.1",
     "should": "^13.1.1",
-    "socket.io-client": "^2.0.3"
+    "socket.io-client": "^2.0.3",
+    "pkg": "^4.2.5"
   }
 }
