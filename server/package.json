@@ -1,7 +1,7 @@
 {
-  "name": "csgo-matchmaking",
+  "name": "csgo-matchmaking-server",
   "version": "0.0.0",
-  "description": "NPM packages for csgo-matchmaking",
+  "description": "NPM packages for csgo-matchmaking-server",
   "private": true,
   "scripts": {
     "prestart": "npm install",

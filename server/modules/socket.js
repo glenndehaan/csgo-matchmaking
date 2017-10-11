@@ -62,7 +62,7 @@ function init() {
                 ready: true
             });
 
-            log.info(`[SOCKET][${socket.id}] Is now ready for a match: ${data.steamID}`);
+            log.info(`[SOCKET][${socket.id}] Is now ready for a match`);
         });
 
         /**
@@ -75,7 +75,7 @@ function init() {
                 ready: false
             });
 
-            log.info(`[SOCKET][${socket.id}] Isn't ready for a match: ${data.steamID}`);
+            log.info(`[SOCKET][${socket.id}] Isn't ready for a match`);
         });
 
         /**

@@ -14,3 +14,7 @@ server/build
 config.js
 csgo-matchmaking.json
 csgo-matchmaking.log
+
+# Client
+client/build
+config.js

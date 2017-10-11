@@ -18,11 +18,6 @@ socket.init();
 log.setLevel('fatal');
 
 describe("Socket", function () {
-    after(function (done) {
-        socket.close();
-        done();
-    });
-
     it('Should connect to Socket.IO server', function (done) {
         const client = io.connect(socketURL, options);
 

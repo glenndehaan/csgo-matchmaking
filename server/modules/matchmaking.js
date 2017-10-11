@@ -67,4 +67,4 @@ function createGroups(players) {
     }
 }
 
-module.exports = {init};
+module.exports = {init, getAllOnlineAndReadyPlayers, createGroups};

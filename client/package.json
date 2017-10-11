@@ -1,0 +1,23 @@
+{
+  "name": "csgo-matchmaking-client",
+  "version": "0.0.0",
+  "description": "NPM packages for csgo-matchmaking-client",
+  "private": true,
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node client.js",
+    "predev": "npm install",
+    "dev": "nodemon -L --watch ./ ./client.js",
+    "build": "pkg ./client.js --targets latest-linux-x64,latest-macos-x64,latest-win-x64 --out-path ./build"
+  },
+  "author": "Glenn de Haan",
+  "license": "MIT",
+  "dependencies": {
+    "simple-node-logger": "^0.93.30",
+    "socket.io-client": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1",
+    "pkg": "^4.2.5"
+  }
+}
