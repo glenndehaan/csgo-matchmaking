@@ -8,11 +8,11 @@ const log = require("./logger");
 /**
  * Initial function
  */
-function init(){
+function init() {
     /**
      * Init the DB object if we launch the app for the first time
      */
-    if(Object.keys(db.getData("/")).length === 0 && db.getData("/").constructor === Object){
+    if (Object.keys(db.getData("/")).length === 0 && db.getData("/").constructor === Object) {
         db.push("/match", []);
         db.push("/users", []);
 

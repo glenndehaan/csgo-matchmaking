@@ -85,7 +85,7 @@ function init() {
             log.info(`[SOCKET] Client disconnected! ID: ${socket.id}`);
 
             const userDataIndex = array.findIndexInData(database.getData("/users"), "socketID", socket.id);
-            if(userDataIndex !== false){
+            if (userDataIndex !== false) {
                 database.push(`/users[${userDataIndex}]/online`, false);
                 database.push(`/users[${userDataIndex}]/ready`, false);
                 database.push(`/users[${userDataIndex}]/socketID`, false);
