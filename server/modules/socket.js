@@ -26,6 +26,7 @@ function init() {
 
             data["online"] = true;
             data["ready"] = false;
+            data["inMatchQueue"] = false;
             data["socketID"] = socket.id;
 
             if (userDataIndex === false) {
@@ -88,6 +89,7 @@ function init() {
             if (userDataIndex !== false) {
                 database.push(`/users[${userDataIndex}]/online`, false);
                 database.push(`/users[${userDataIndex}]/ready`, false);
+                database.push(`/users[${userDataIndex}]/inMatchQueue`, false);
                 database.push(`/users[${userDataIndex}]/socketID`, false);
             }
         });

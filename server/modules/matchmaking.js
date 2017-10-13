@@ -4,6 +4,8 @@
 const log = require("./logger");
 const db = require("./database").db;
 const io = require("./socket").io;
+const server = require("./server");
+const array = require("../helpers/array");
 const playerAmount = 2;
 
 /**
@@ -11,9 +13,9 @@ const playerAmount = 2;
  */
 function init() {
     setInterval(function () {
-        const players = createGroups(getAllOnlineAndReadyPlayers());
-        
-        // console.log('players', players);
+        const groups = createGroups(getAllOnlineAndReadyPlayers());
+
+        processMatches(groups);
     }, 10000);
 
     log.info("[MATCHMAKING] Started the matchmaking service!");
@@ -29,7 +31,7 @@ function getAllOnlineAndReadyPlayers() {
     let groups = [];
 
     for (let player = 0; player < allPlayers.length; player++) {
-        if (allPlayers[player].online === true && allPlayers[player].ready === true) {
+        if (allPlayers[player].online === true && allPlayers[player].ready === true && allPlayers[player].inMatchQueue === false) {
             groups.push(allPlayers[player]);
         }
 
@@ -65,6 +67,35 @@ function createGroups(players) {
             return playerGroups;
         }
     }
+
+    if(players.length === 0){
+        return [];
+    }
 }
 
-module.exports = {init, getAllOnlineAndReadyPlayers, createGroups};
+/**
+ * Process all groups into matches
+ *
+ * @param groups
+ * @param test
+ */
+function processMatches(groups, test = false){
+    for(let group = 0; group < groups.length; group++){
+        for(let player = 0; player < groups[group].length; player++){
+            const userDataIndex = array.findIndexInData(db.getData("/users"), "steamID", groups[group][player].steamID);
+            if(server.requestFreeServer()) {
+                db.push(`/users[${userDataIndex}]/inMatchQueue`, true);
+
+                const matchServer = server.requestFreeServer();
+                server.reserveServer(matchServer.index, test);
+
+                io.sockets.emit("match_ready", {
+                    users: groups[group],
+                    server: `${matchServer.server.ip}:${matchServer.server.port}`
+                });
+            }
+        }
+    }
+}
+
+module.exports = {init, getAllOnlineAndReadyPlayers, createGroups, processMatches};
