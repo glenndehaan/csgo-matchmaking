@@ -11,18 +11,24 @@ describe("Server", function () {
     });
 
     it('Should give a server', function (done) {
-        const testServer = server.requestFreeServer();
-        testServer.should.be.Object();
-        done();
+        server.requestFreeServer((testServer) => {
+            if(testServer){
+                testServer.should.be.Object();
+                done();
+            }
+        });
     });
 
     it('Should reserve a server', function (done) {
-        const testServer = server.requestFreeServer();
-        server.reserveServer(testServer.index, true);
+        server.requestFreeServer((testServer) => {
+            if(testServer){
+                server.reserveServer(testServer.index, true);
 
-        const testServer2 = server.requestFreeServer();
-        testServer2.should.be.Object();
-
-        done();
+                server.requestFreeServer((testServer2) => {
+                    testServer2.should.be.Object();
+                    done();
+                });
+            }
+        });
     });
 });

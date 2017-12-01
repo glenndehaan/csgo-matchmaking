@@ -15,21 +15,25 @@ function init(){
 /**
  * Check if we have a server available
  *
+ * @param callback
  * @return {*}
  */
-function requestFreeServer(){
-    for(let server = 0; server < servers.length; server++){
-        if(servers[server].available === true){
-            return {index: server, server: servers[server]};
-        }
-
-        if(servers.length === server){
-            return false;
-        }
+function requestFreeServer(callback){
+    if(servers.length === 0){
+        callback(false);
+        return;
     }
 
-    if(servers.length < 0){
-        return false;
+    for(let server = 0; server < servers.length; server++){
+        if(servers[server].available === true){
+            callback({index: server, server: servers[server]});
+            break;
+        }
+
+        if(servers.length === (server + 1)){
+            callback(false);
+            break;
+        }
     }
 }
 

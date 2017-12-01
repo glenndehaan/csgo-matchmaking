@@ -49,6 +49,10 @@ function getAllOnlineAndReadyPlayers() {
  * @return {Array}
  */
 function createGroups(players) {
+    if(typeof players === "undefined"){
+        return [];
+    }
+
     let groupIndex = 0;
     let playerGroups = [];
     let temp_group = [];
@@ -81,20 +85,23 @@ function createGroups(players) {
  */
 function processMatches(groups, test = false){
     for(let group = 0; group < groups.length; group++){
-        for(let player = 0; player < groups[group].length; player++){
-            const userDataIndex = array.findIndexInData(db.getData("/users"), "steamID", groups[group][player].steamID);
-            if(server.requestFreeServer()) {
-                db.push(`/users[${userDataIndex}]/inMatchQueue`, true);
+        server.requestFreeServer((matchServer) => {
+            if(matchServer){
+                for(let player = 0; player < groups[group].length; player++){
+                    const userDataIndex = array.findIndexInData(db.getData("/users"), "steamID", groups[group][player].steamID);
+                    db.push(`/users[${userDataIndex}]/inMatchQueue`, true);
+                }
 
-                const matchServer = server.requestFreeServer();
                 server.reserveServer(matchServer.index, test);
 
                 io.sockets.emit("match_ready", {
                     users: groups[group],
                     server: `${matchServer.server.ip}:${matchServer.server.port}`
                 });
+            }else{
+                log.warn("[SERVERS] Full!");
             }
-        }
+        });
     }
 }
 
