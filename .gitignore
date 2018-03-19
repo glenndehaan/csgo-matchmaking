@@ -18,3 +18,7 @@ csgo-matchmaking.log
 # Client
 client/build
 config.js
+
+# Coverage/test files
+coverage/
+.nyc_output/

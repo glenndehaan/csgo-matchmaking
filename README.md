@@ -2,6 +2,8 @@
 
 An alternative to the normal integrated matchmaking
 
+[![Build Status](https://travis-ci.org/glenndehaan/csgo-matchmaking.svg?branch=master)](https://travis-ci.org/glenndehaan/csgo-matchmaking) [![Coverage Status](https://coveralls.io/repos/github/glenndehaan/csgo-matchmaking/badge.svg?branch=master)](https://coveralls.io/github/glenndehaan/csgo-matchmaking?branch=master) ![dependencies](https://david-dm.org/glenndehaan/csgo-matchmaking.svg)
+
 ## Structure
 ### Server
 - NodeJS
@@ -26,8 +28,8 @@ An alternative to the normal integrated matchmaking
 ## Basic Usage
 - Install NodeJS 8.0 or higher
 - For both server and client copy the `config.example.js` to `config.js` and change the vars to your needs
-- cd into the server folder and run `npm start`
-- cd into the client folder and run `npm start`
+- cd into the server folder and run `npm install` and `npm start`
+- cd into the client folder and run `npm install` and `npm start`
 - That's it. You should see the client connect to the server.
 
 ## Build
@@ -38,7 +40,7 @@ An alternative to the normal integrated matchmaking
 
 ## Test
 - Install NodeJS 8.0 or higher
-- cd into the server folder run `npm install` and `npm run test`
+- cd into the server folder run `npm install` and `npm test`
 
 ## Logging
 All logs will be written to the `csgo-matchmaking.log` file in the node folder.

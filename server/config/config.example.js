@@ -10,6 +10,12 @@ module.exports = {
             port: 27015,
             password: "astrongpassword",
             default_map: "de_dust2"
+        },
+        {
+            ip: "192.168.1.XX",
+            port: 27016,
+            password: "anotherstrongpassword",
+            default_map: "de_mirage"
         }
     ]
 };
