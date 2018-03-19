@@ -2,5 +2,5 @@ language: node_js
 node_js:
   - "8"
 install: cd server && npm install
-script: cd server && cp ./config/config.example.js ./config/config.js && cp ../_resources/db/test-csgo-matchmaking.json ./csgo-matchmaking.json && npm test
-after_success: cd server && npm run coverage
+script: cp ./config/config.example.js ./config/config.js && cp ../_resources/db/test-csgo-matchmaking.json ./csgo-matchmaking.json && npm test
+after_success: npm run coverage
